@@ -1,9 +1,6 @@
 export const state = () => ({
-    counter: 0
+    apiKey: ""
   })
   
   export const mutations = {
-    increment(state) {
-      state.counter++
-    }
   }

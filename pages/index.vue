@@ -1,10 +1,18 @@
 <template>
-  <main class="h-screen bg-[#202020]">
-    <TheNavbar />
-  </main>
+<main>
+  <Sidebar />
+  <MainSection />
+</main>
+
 </template>
 
 <script>
+
 export default {
 }
 </script>
+
+<style scoped>
+
+
+</style>
