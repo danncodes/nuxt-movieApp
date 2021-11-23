@@ -2,15 +2,15 @@
   <main class="sm:ml-14 sm:w-[calc(100%-3.5rem)] w-full p-4">
 
     <!-- Section Title -->
-    <h1 class="text-xl mb-4 font-medium uppercase border-l-4 border-[#0FEFFD] px-3 rounded-xs">{{ blockType }}</h1>
+    <h1 class="text-xl mb-4 font-medium uppercase border-l-4 border-[#0FEFFD] px-3 rounded-xs" v-if="blockType">{{ blockType }}</h1>
 
     <!-- Movies -->
     <section class="flex gap-3 max-w-full overflow-x-scroll" v-if="movies" @scroll="scrollFinished" ref="block">
-        <MoviePoster v-for="movie in movies" :key="movie.id" :movie="movie"/>
+        <AppMoviePoster v-for="movie in movies" :key="movie.id" :movie="movie"/>
     </section>
     <!-- Skeleton Loader -->
     <section class="flex gap-3 max-w-full overflow-x-scroll" v-else>
-        <PosterSkeleton v-for="movie in skeletonMovies" :key="movie.id"/>
+        <SkeletonPoster v-for="movie in skeletonMovies" :key="movie.id"/>
     </section>
     
   </main>

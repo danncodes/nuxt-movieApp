@@ -1,11 +1,10 @@
 <template>
-<main class="bg-theme-primary font-cairo text-white">
-  <Sidebar />
-  <MainSection :popularMovies="popularMovies" v-if="popularMovies"/>
-  <MainSkeleton v-if="!popularMovies"/>
-  <MoviesBlock blockType="Popular" :movies="popularMovies"/>
-  <MoviesBlock blockType="Top Rated" :movies="topRatedMovies"/>
-  <MoviesBlock blockType="Upcoming" :movies="upcomingMovies"/>
+<main class="bg-theme-primary text-white">
+  <HomeMainSection :popularMovies="popularMovies" v-if="popularMovies"/>
+  <SkeletonHomeMain v-if="!popularMovies"/>
+  <AppMoviesBlock blockType="Popular" :movies="popularMovies"/>
+  <AppMoviesBlock blockType="Top Rated" :movies="topRatedMovies"/>
+  <AppMoviesBlock blockType="Upcoming" :movies="upcomingMovies"/>
 </main>
 
 </template>
@@ -35,7 +34,6 @@ export default {
           const req = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=en-US`)
           const data = await req.json()
           this.popularMovies = data.results
-          console.log(this.popularMovies)
         }
         catch(e){
           console.log(e.message)

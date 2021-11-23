@@ -10,8 +10,6 @@ module.exports = {
         }
       },
       fontFamily: {
-        roboto: 'Roboto',
-        cairo: 'Cairo'
       }
     },
   },

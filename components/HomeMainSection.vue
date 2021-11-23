@@ -3,13 +3,14 @@
   :style="'background-image: url(' + `https://image.tmdb.org/t/p/original${featuredMovie.backdrop_path}` + ')'" v-if="featuredMovie">
 
     <!-- Movie Ribbon -->
-    <MovieRibbon :rating="featuredMovie.vote_average"/>
+    <HomeMovieRibbon :rating="featuredMovie.vote_average"/>
 
     <!-- Movie Info Block -->
     <section class="mb-4">
+      
       <!-- Movie Tags -->
       <div class="flex">
-        <MovieTag v-for="genreID in featuredMovie.genre_ids" :key="genreID" :genreID="genreID" />
+        <AppMovieTag v-for="genreID in featuredMovie.genre_ids" :key="genreID" :genreID="genreID" />
       </div>
 
       <!-- Star Rating -->
@@ -43,7 +44,7 @@
           <h1 class="font-bold text-md">18+</h1>
         </div>
 
-        <h1 class="text-xl sm:text-2xl lg:text-3xl font-black mb-4">{{ featuredMovie.original_title }}</h1>
+        <h1 class="text-xl sm:text-2xl lg:text-3xl font-black mb-4 uppercase">{{ featuredMovie.original_title }}</h1>
         <p class="text-xs sm:text-sm font-medium">{{ featuredMovie.overview }}</p>
       </div>
     </section>
@@ -84,7 +85,7 @@ export default {
     data(){
         return {
             featuredMovie: undefined,
-            index: 0
+            index: 0,
         }
     },
     mounted(){
@@ -102,19 +103,11 @@ export default {
         this.index === 0 ? this.index = 4 : this.index--
       }
       this.updateFeatureFilm()
-    }
-
+    },
   }
 
 }
 </script>
 
 <style scoped>
-
-/* .box {
-  width: 200px; height: 300px;
-  position: relative;
-  border: 1px solid #BBB;
-  background: #EEE;
-} */
 </style>
