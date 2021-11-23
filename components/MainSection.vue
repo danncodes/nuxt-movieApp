@@ -5,6 +5,7 @@
     <!-- Movie Ribbon -->
     <MovieRibbon :rating="featuredMovie.vote_average"/>
 
+    <!-- Movie Info Block -->
     <section class="mb-4">
       <!-- Movie Tags -->
       <div class="flex">
@@ -34,7 +35,7 @@
 
       </div>
 
-      <!-- Movie Info -->
+      <!-- Movie Data -->
       <div class="bg-theme-primary backdrop-blur-xl bg-opacity-50 rounded p-2 max-w-sm">
 
         <!-- Adult? -->
@@ -48,7 +49,7 @@
     </section>
 
     <!-- Feature Section Toggler -->
-    <section class="w-full flex justify-center items-center">
+    <section class="w-full flex justify-center items-center z-50">
       <ul class="h-4 w-32 mx-auto absolute bottom-2 flex items-center justify-around rounded-xs">
         <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 0 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[0]; index = 0"></li>
         <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 1 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[1]; index = 1"></li>
@@ -56,6 +57,22 @@
       </ul>
     </section>
 
+    <section class="hidden  h-full w-full sm:ml-14 sm:w-[calc(100%-3.5rem)] px-4 absolute left-0 top-0 max-w-7xl sm:flex justify-between items-center">
+      <!-- Left -->
+      <div class="h-12 w-12 rounded-xs hover:backdrop-blur-xl bg-opacity-50 flex justify-center items-center duration-150 cursor-pointer" @click="toggleCarousel('p')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </div>
+
+      <!-- Right -->
+      <div class="h-12 w-12 rounded-xs hover:backdrop-blur-xl bg-opacity-50 flex justify-center items-center duration-150 cursor-pointer" @click="toggleCarousel('n')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+
+    </section>
   </main>
 </template>
 
@@ -81,11 +98,20 @@ export default {
       const req = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=en-US`)
       const data = await req.json()
       this.popularMovies = data.results
-          this.featuredMovie = this.popularMovies[this.index]
+          this.updateFeatureFilm()
           console.log(this.featuredMovie)
     },
-    updateFeaturedMovie(){
-    
+    updateFeatureFilm(){
+      this.featuredMovie = this.popularMovies[this.index]
+    },
+    toggleCarousel(direction){
+      if(direction === 'n'){
+        this.index === 2 ? this.index = 0 : this.index++
+      }
+      else{
+        this.index === 0 ? this.index = 2 : this.index--
+      }
+      this.updateFeatureFilm()
     }
 
   }
