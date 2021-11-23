@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full bg-cover bg-center bg-no-repeat h-96 relative sm:h-[648px] max-w-7xl flex flex-col justify-end p-4 sm:pl-[72px]"
+  <main class="w-full bg-cover bg-center bg-no-repeat h-96 relative sm:h-[648px] mx-auto max-w-7xl flex flex-col justify-end p-4 sm:pl-[72px]"
   :style="'background-image: url(' + `https://image.tmdb.org/t/p/original${featuredMovie.backdrop_path}` + ')'" v-if="featuredMovie">
 
     <!-- Movie Ribbon -->
@@ -80,29 +80,17 @@
 
 <script>
 export default {
+  props: ["popularMovies"],
     data(){
         return {
             featuredMovie: undefined,
-            popularMovies: undefined,
             index: 0
         }
     },
-    computed: {
-      apiKey(){
-        return this.$store.state.apiKey
-      }
-    },
     mounted(){
-    this.getPopularMovies()
-  },
-  methods: {
-    async getPopularMovies(){
-      const req = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=en-US`)
-      const data = await req.json()
-      this.popularMovies = data.results
-          this.updateFeatureFilm()
-          console.log(this.featuredMovie)
+      this.updateFeatureFilm()
     },
+  methods: {
     updateFeatureFilm(){
       this.featuredMovie = this.popularMovies[this.index]
     },
