@@ -1,5 +1,6 @@
 <template>
-  <div class="ribbon2 flex justify-center items bg-[#0FEFFD] bg-opacity-60 font-semibold">
+  <div class="ribbon2 flex flex-col justify-center items-center bg-[#0FEFFD] bg-opacity-60 font-semibold">
+      <span class="text-[10px]">IMDB Rating:</span>
       <span class="my-4">{{ rating }}</span>
     </div>
 </template>
