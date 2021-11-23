@@ -8,6 +8,9 @@ module.exports = {
         theme: {
           primary: "#1D1D1D",
         }
+      },
+      fontFamily: {
+        roboto: 'Roboto'
       }
     },
   },

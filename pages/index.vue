@@ -1,5 +1,5 @@
 <template>
-<main>
+<main class="bg-theme-primary font-roboto text-white">
   <Sidebar />
   <MainSection />
 </main>
