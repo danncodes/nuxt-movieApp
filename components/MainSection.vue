@@ -5,7 +5,7 @@
     <!-- Movie Ribbon -->
     <MovieRibbon :rating="featuredMovie.vote_average"/>
 
-    <section>
+    <section class="mb-4">
       <!-- Movie Tags -->
       <div class="flex">
         <MovieTag v-for="genreID in featuredMovie.genre_ids" :key="genreID" :genreID="genreID" />
