@@ -2,6 +2,7 @@
 <main class="bg-theme-primary font-roboto text-white">
   <Sidebar />
   <MainSection />
+  <Films />
 </main>
 
 </template>

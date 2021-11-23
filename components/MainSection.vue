@@ -54,6 +54,8 @@
         <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 0 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[0]; index = 0"></li>
         <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 1 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[1]; index = 1"></li>
         <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 2 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[2]; index = 2"></li>
+        <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 3 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[3]; index = 3"></li>
+        <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 4 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[4]; index = 4"></li>
       </ul>
     </section>
 
@@ -106,10 +108,10 @@ export default {
     },
     toggleCarousel(direction){
       if(direction === 'n'){
-        this.index === 2 ? this.index = 0 : this.index++
+        this.index === 4 ? this.index = 0 : this.index++
       }
       else{
-        this.index === 0 ? this.index = 2 : this.index--
+        this.index === 0 ? this.index = 4 : this.index--
       }
       this.updateFeatureFilm()
     }
