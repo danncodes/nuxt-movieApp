@@ -36,14 +36,14 @@
       </div>
 
       <!-- Movie Data -->
-      <div class="bg-theme-primary backdrop-blur-xl bg-opacity-50 rounded p-2 max-w-sm">
+      <div class="bg-theme-primary backdrop-blur-xl bg-opacity-50 rounded p-2 max-w-sm border-l-4 border-[#0FEFFD]">
 
         <!-- Adult? -->
         <div class="bg-red-500 bg-opacity-50 h-8 w-8 rounded-full absolute -right-5 -top-5 flex justify-center items-center" v-if="featuredMovie.adult">
           <h1 class="font-bold text-md">18+</h1>
         </div>
 
-        <h1 class="text-xl sm:text-2xl font-semibold mb-4">{{ featuredMovie.original_title }}</h1>
+        <h1 class="text-xl sm:text-2xl lg:text-3xl font-black mb-4">{{ featuredMovie.original_title }}</h1>
         <p class="text-xs sm:text-sm font-medium">{{ featuredMovie.overview }}</p>
       </div>
     </section>

@@ -1,5 +1,5 @@
 <template>
-<main class="bg-theme-primary font-roboto text-white">
+<main class="bg-theme-primary font-cairo text-white">
   <Sidebar />
   <MainSection :popularMovies="popularMovies" v-if="popularMovies"/>
   <MainSkeleton v-if="!popularMovies"/>
@@ -35,6 +35,7 @@ export default {
           const req = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=en-US`)
           const data = await req.json()
           this.popularMovies = data.results
+          console.log(this.popularMovies)
         }
         catch(e){
           console.log(e.message)
