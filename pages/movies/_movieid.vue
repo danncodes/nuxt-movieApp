@@ -7,7 +7,7 @@
     <AppPeopleBlock blockType="Cast" :cast="cast"/>
 
     <AppMoviesBlock blockType="More Like This" :movies="similarMovies"/>
-    <AppMoviesBlock blockType="Reccomended" :movies="recommendations"/>
+    <AppMoviesBlock blockType="Recommended" :movies="recommendations"/>
 
 </main>
 </template>
