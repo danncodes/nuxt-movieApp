@@ -74,10 +74,6 @@ export default {
         return `${h}h ${m}m`
       }
     },
-    mounted(){
-      console.log(this.movie)
-    }
-
 }
 </script>
 

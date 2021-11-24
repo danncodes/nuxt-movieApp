@@ -4,8 +4,8 @@
     <AboutMainSection :movie="movie" v-if="movie"/>
     <!-- <section v-else class="h-96 w-full bg-red-400"></section> -->
 
+    <AboutProductionBlock blockType="Production" :companies="companies"/>
     <AppPeopleBlock blockType="Cast" :cast="cast"/>
-
     <AppMoviesBlock blockType="More Like This" :movies="similarMovies"/>
     <AppMoviesBlock blockType="Recommended" :movies="recommendations"/>
 
@@ -20,7 +20,8 @@ export default {
             similarMovies: undefined,
             recommendations: undefined,
             cast: undefined,
-
+            companies: undefined,
+            videos: undefined
         }
     },
     computed: {
@@ -33,6 +34,7 @@ export default {
         this.getSimilarMovies()
         this.getRecomendations()
         this.getCredits()
+        this.getVideos()
 
     },
     methods: {
@@ -41,6 +43,7 @@ export default {
                 const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}?api_key=${this.apiKey}&language=en-US`)
                 const data = await req.json()
                 this.movie = data
+                this.companies = data.production_companies
             }
             catch(e){
                 console.log(e.message)
@@ -71,6 +74,17 @@ export default {
                 const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}/credits?api_key=${this.apiKey}&language=en-US`)
                 const data = await req.json()
                 this.cast = data.cast
+            }
+            catch(e){
+                console.log(e.message)
+            }
+        },
+        async getVideos(){
+            try{
+                const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}/videos?api_key=${this.apiKey}&language=en-US`)
+                const data = await req.json()
+                this.videos = data
+                console.log("Vids", data)
             }
             catch(e){
                 console.log(e.message)
