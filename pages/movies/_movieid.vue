@@ -1,8 +1,13 @@
 <template>
 <main class="bg-theme-primary text-white">
+    <AppSidebar />
     <AboutMainSection :movie="movie" v-if="movie"/>
-    <section v-else class="h-96 w-full bg-red-400"></section>
+    <!-- <section v-else class="h-96 w-full bg-red-400"></section> -->
+
+    <AppPeopleBlock blockType="Cast" :cast="cast"/>
+
     <AppMoviesBlock blockType="More Like This" :movies="similarMovies"/>
+    <AppMoviesBlock blockType="Reccomended" :movies="recommendations"/>
 
 </main>
 </template>
@@ -12,7 +17,9 @@ export default {
     data(){
         return {
             movie: undefined,
-            similarMovies: undefined
+            similarMovies: undefined,
+            recommendations: undefined,
+            cast: undefined,
 
         }
     },
@@ -24,7 +31,8 @@ export default {
     mounted(){
         this.getMovie()
         this.getSimilarMovies()
-        console.log(this.$route.params.movieid)
+        this.getRecomendations()
+        this.getCredits()
 
     },
     methods: {
@@ -33,7 +41,6 @@ export default {
                 const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}?api_key=${this.apiKey}&language=en-US`)
                 const data = await req.json()
                 this.movie = data
-                console.log(this.movie)
             }
             catch(e){
                 console.log(e.message)
@@ -44,6 +51,26 @@ export default {
                 const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}/similar?api_key=${this.apiKey}&language=en-US`)
                 const data = await req.json()
                 this.similarMovies = data.results
+            }
+            catch(e){
+                console.log(e.message)
+            }
+        },
+        async getRecomendations(){
+            try{
+                const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}/recommendations?api_key=${this.apiKey}&language=en-US`)
+                const data = await req.json()
+                this.recommendations = data.results
+            }
+            catch(e){
+                console.log(e.message)
+            }
+        },
+        async getCredits(){
+            try{
+                const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}/credits?api_key=${this.apiKey}&language=en-US`)
+                const data = await req.json()
+                this.cast = data.cast
             }
             catch(e){
                 console.log(e.message)

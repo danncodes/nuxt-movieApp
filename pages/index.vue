@@ -1,5 +1,6 @@
 <template>
 <main class="bg-theme-primary text-white">
+  <AppSidebar />
   <HomeMainSection :popularMovies="popularMovies" v-if="popularMovies"/>
   <SkeletonHomeMain v-if="!popularMovies"/>
   <AppMoviesBlock blockType="Popular" :movies="popularMovies"/>
