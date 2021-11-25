@@ -3,7 +3,7 @@
     <AppSidebar />
     <AboutMainSection :movie="movie" v-if="movie"/>
     <!-- <section v-else class="h-96 w-full bg-red-400"></section> -->
-    <AboutVideoBlock blockType="Videos" :videos="videos"/>
+    <AboutVideoBlock blockType="Videos" :videos="videos" v-if="videos"/>
     <AboutProductionBlock blockType="Production" :companies="companies"/>
     <AppPeopleBlock blockType="Cast" :cast="cast"/>
     <AppMoviesBlock blockType="More Like This" :movies="similarMovies"/>
@@ -83,8 +83,10 @@ export default {
             try{
                 const req = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}/videos?api_key=${this.apiKey}&language=en-US`)
                 const data = await req.json()
-                this.videos = data
-                console.log("Vids", data)
+                if(data.results.length){
+                    this.videos = data
+                    console.log("Vids", data)
+                }
             }
             catch(e){
                 console.log(e.message)

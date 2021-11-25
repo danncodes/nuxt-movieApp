@@ -4,8 +4,8 @@
     <!-- Section Title -->
     <h1 class="text-xl mb-4 font-medium uppercase border-l-4 border-[#0FEFFD] px-3 rounded-xs" v-if="blockType">{{ blockType }}</h1>
 
-    <!-- Movies -->
-    <section class="flex justify-center items-center gap-3" v-if="videos" ref="block">
+    <!-- Videos -->
+    <section class="flex justify-center items-center gap-3 max-w-4xl mx-auto" v-if="videos" ref="block">
         <AboutVideo :video="videos.results[0]"/>
     </section>
     <!-- Skeleton Loader -->
