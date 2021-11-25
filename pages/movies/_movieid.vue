@@ -3,7 +3,7 @@
     <AppSidebar />
     <AboutMainSection :movie="movie" v-if="movie"/>
     <!-- <section v-else class="h-96 w-full bg-red-400"></section> -->
-
+    <AboutVideoBlock blockType="Videos" :videos="videos"/>
     <AboutProductionBlock blockType="Production" :companies="companies"/>
     <AppPeopleBlock blockType="Cast" :cast="cast"/>
     <AppMoviesBlock blockType="More Like This" :movies="similarMovies"/>
