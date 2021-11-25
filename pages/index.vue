@@ -1,11 +1,13 @@
 <template>
-<main class="bg-theme-primary text-white">
+<main class="bg-theme-primary text-white relative">
   <AppSidebar />
   <HomeMainSection :popularMovies="popularMovies" v-if="popularMovies"/>
   <SkeletonHomeMain v-if="!popularMovies"/>
   <AppMoviesBlock blockType="Popular" :movies="popularMovies"/>
   <AppMoviesBlock blockType="Top Rated" :movies="topRatedMovies"/>
   <AppMoviesBlock blockType="Upcoming" :movies="upcomingMovies"/>
+
+  <!-- <AppBackToTopBtn /> -->
 </main>
 
 </template>
