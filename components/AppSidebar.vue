@@ -10,7 +10,7 @@
 <ul class="h-full sm:h-96 flex sm:flex-col sm:justify-between justify-around max-w-sm mx-auto">
 
     <!-- Home -->
-    <li :class="{ 'sm:border-l-4 sm:border-b-0 border-b-4 border-[#0FEFFD] rounded': this.$route.name === 'index' }">
+    <li @click="closeSearchScreen" :class="{ 'sm:border-l-4 sm:border-b-0 border-b-4 border-[#0FEFFD] rounded': this.$route.name === 'index' && !searchScreen }">
         <NuxtLink to="/" class="sm:w-full w-14 flex justify-center items-center sm:h-14 h-full hover:bg-white cursor-pointer hover:bg-opacity-30 duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -19,7 +19,7 @@
     </li>
 
     <!-- Search -->
-    <li>
+    <li @click="toggleSearchScreen" :class="{ 'sm:border-l-4 sm:border-b-0 border-b-4 border-[#0FEFFD] rounded': searchScreen }">
         <a class="sm:w-full w-14 flex justify-center items-center sm:h-14 h-full hover:bg-white cursor-pointer hover:bg-opacity-30 duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -51,8 +51,18 @@
 
 <script>
 export default {
-    mounted(){
-        console.log(this.$route)
+    computed: {
+        searchScreen(){
+            return this.$store.state.searchScreen
+        }
+    },
+    methods: {
+        toggleSearchScreen(){
+            this.$store.commit("toggleSearchScreen")
+        },
+        closeSearchScreen(){
+            this.$store.commit("closeSearchScreen")
+        }
     }
 
 }

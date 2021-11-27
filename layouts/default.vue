@@ -2,6 +2,6 @@
 <main>
   <AppSidebar />
   <Nuxt />
-  <!-- <AppSearch /> -->
+  <AppSearch />
 </main>
 </template>
