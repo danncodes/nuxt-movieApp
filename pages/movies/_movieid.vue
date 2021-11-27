@@ -1,5 +1,5 @@
 <template>
-<main class="bg-theme-primary text-white">
+<main class="">
     <AboutMainSection :movie="movie" v-if="movie"/>
     <!-- <section v-else class="h-96 w-full bg-red-400"></section> -->
     <AboutVideoBlock blockType="Videos" :videos="videos" v-if="videos"/>
