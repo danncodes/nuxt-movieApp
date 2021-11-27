@@ -50,7 +50,7 @@
     </section>
 
     <!-- Feature Section Toggler -->
-    <section class="w-full flex justify-center items-center z-50">
+    <section class="w-full flex justify-center items-center z-30">
       <ul class="h-4 w-32 mx-auto absolute bottom-2 flex items-center justify-around rounded-xs">
         <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 0 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[0]; index = 0"></li>
         <li class="h-2 w-2 rounded-full cursor-pointer hover:opacity-100 duration-300" :class="index === 1 ? 'opacity-100 bg-[#0FEFFD] scale-125' : 'bg-white opacity-70' " @click="featuredMovie = popularMovies[1]; index = 1"></li>
