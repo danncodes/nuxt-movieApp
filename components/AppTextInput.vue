@@ -19,17 +19,40 @@ export default {
     props: ["placeholder"],
     data(){
         return {
-            inputValue: ""
+            inputValue: "",
+            searchResults: undefined
+            
         }
+    },
+    computed: {
+      apiKey(){
+        return this.$store.state.apiKey
+      }
     },
     methods: {
         clearInput(){
             this.$refs.input.value = ""
             this.inputValue = this.$refs.input.value
+            this.$emit("getSearchResults", undefined)
         },
         userInput(){
             this.inputValue = this.$refs.input.value
-        }
+            if(!this.inputValue){
+                this.$emit("getSearchResults", undefined)
+            }
+            this.getSearchResults()
+        },
+        async getSearchResults(){
+            try{
+                const req = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&query=${this.inputValue}&page=1&include_adult=false`)
+                const data = await req.json()
+                this.searchResults = data
+                this.$emit("getSearchResults", this.searchResults.results)
+            }
+            catch(e){
+                console.log(e.message)
+            }
+    },
     }
 
 }
