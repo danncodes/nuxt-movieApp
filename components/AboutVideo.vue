@@ -7,10 +7,6 @@
 <script>
 export default {
     props: ["video"],
-    mounted(){
-        console.log(this.video)
-    }
-
 }
 </script>
 

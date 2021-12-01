@@ -3,6 +3,7 @@
     :class="!searchScreen ? '-translate-y-full' : 'translate-y-0'" >
     <AppTextInput placeholder="Search Movies ..." @getSearchResults="updateUserSearch"/>
     <AppMoviesBlock blockType="Search Results" :movies="searchResults" v-if="searchResults"/>
+    <AppMoviesBlock blockType="Recommended" :movies="recommended" v-if="recommended"/>
   </main>
 </template>
 
@@ -10,18 +11,32 @@
 export default {
   data(){
     return {
-      searchResults: undefined
+      searchResults: undefined,
+      recommended: undefined
     }
   },
   computed: {
+    apiKey(){
+        return this.$store.state.apiKey
+      },
     searchScreen(){
       return this.$store.state.searchScreen
+    }
+  },
+  async mounted(){
+    try{
+      const req = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=en-US&page=5`)
+      const data = await req.json()
+      this.recommended = data.results
+    }
+    catch(e){
+      console.log(e.message)
     }
   },
   methods: {
     updateUserSearch(data){
       this.searchResults = data
-    }
+    },
   }
 
 }

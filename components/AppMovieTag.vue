@@ -66,7 +66,6 @@ export default {
                 case 878:
                     this.genre = "Science Fiction"
                     break
-
                 case 10770:
                     this.genre = "TV Movie"
                     break
