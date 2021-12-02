@@ -14,7 +14,17 @@ export const mutations = {
   },
   addToFavourites(state, movie){
     state.favourites.push(movie)
-    console.log("favourites: ", state.favourites)
+    console.log("ADDED: ", state.favourites)
+    localStorage.setItem( "favourites", JSON.stringify(state.favourites) )
+  },
+  removeFromFavourites(state, index){
+    state.favourites.splice(index, 1)
+    console.log("REMOVED: ", state.favourites)
+    localStorage.setItem( "favourites", JSON.stringify(state.favourites) )
+  },
+  clearFavourites(state){
+    state.favourites = []
+    localStorage.clear('favourites')
   },
   setFavourites(state, favourites){
     state.favourites = favourites

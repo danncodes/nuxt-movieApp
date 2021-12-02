@@ -84,7 +84,6 @@ export default {
                 const data = await req.json()
                 if(data.results.length){
                     this.videos = data
-                    console.log("Vids", data)
                 }
             }
             catch(e){
