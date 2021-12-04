@@ -14,11 +14,11 @@
 <script>
 export default {
     data(){
-        return {
-            popularMovies: undefined,
-            topRatedMovies: undefined,
-            upcomingMovies: undefined
-        }
+      return {
+        popularMovies: undefined,
+        topRatedMovies: undefined,
+        upcomingMovies: undefined
+      }
     },
     computed: {
       apiKey(){

@@ -86,9 +86,11 @@ export default {
       handleFavourite(){
         if(!this.$store.state.favourites.includes(this.movie.id)){
           this.$store.commit("addToFavourites",this.movie.id)
+          this.$store.dispatch("notificationEvent", `${this.movie.title} Added to Favouraites`)
         } else {
           const index = this.$store.state.favourites.indexOf(this.movie.id)
           this.$store.commit("removeFromFavourites",index)
+          this.$store.dispatch("notificationEvent", `${this.movie.title} Removed from Favouraites`)
         }
       }
     }
