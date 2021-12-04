@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  mounted(){
+  beforeMount(){
     if(localStorage.getItem("favourites")){
       const favourites = JSON.parse(localStorage.getItem("favourites"))
       this.$store.commit("setFavourites", favourites)

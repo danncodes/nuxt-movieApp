@@ -3,7 +3,7 @@
   :style="'background-image: url(' + `https://image.tmdb.org/t/p/original${movie.backdrop_path}` + ')'" v-if="movie">
   <img class="h-64 w-44 min-w-[11rem] lg:h-72 lg:w-48 lg:min-w-[12rem] duration-200 rounded-xs object-cover mx-auto mb-4" :src="'https://image.tmdb.org/t/p/original'+ movie.poster_path" alt="">
   <!-- Favourites -->
-  <section class="absolute top-4 right-4" @click="addToFavourites">
+  <section class="absolute top-4 right-4" @click="handleFavourite">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 cursor-pointer hover:fill-[#fd420ff5] duration-300 hover:shadow-2xl" :class="{'fill-[#fd420ff5]' : favourites.includes(movie.id)}" viewBox="0 0 20 20" fill="white">
       <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
     </svg>
@@ -83,7 +83,7 @@ export default {
       }
     },
     methods: {
-      addToFavourites(){
+      handleFavourite(){
         if(!this.$store.state.favourites.includes(this.movie.id)){
           this.$store.commit("addToFavourites",this.movie.id)
         } else {
