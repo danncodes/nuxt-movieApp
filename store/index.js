@@ -49,4 +49,9 @@ export const actions = {
 }
 
 export const getters = {
+  movieIds(state){
+    return state.favourites.map( (movie) => {
+      return movie.id
+    })
+  }
 }

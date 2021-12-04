@@ -7,8 +7,9 @@
 
     <!-- User Favourites -->
     <section v-else class="">
+      <div class="h-12 w-12 bg-red-200 ml-auto"></div>
       <AppMoviesBlock blockType="Favourites" :movies="favouriteMovies"/>
-      <AppMoviesBlock :blockType="'Because you like ' + movies.id" :movies="movies.movies" v-for="movies in similarMovies" :key="movies.id"/>
+      <AppMoviesBlock :blockType="'Because you like ' + movies.title" :movies="movies.movies" v-for="movies in similarMovies" :key="movies.id"/>
     </section>
   </main>
 </template>
@@ -27,13 +28,10 @@ export default {
   },
   methods: {
     getFavourites(){
-      console.log(this.favourites)
-      console.log(this.favourites.length)
       this.favourites.forEach( (movie) => {
-      this.getMovie(movie)
-      this.getSimlarMovies(movie)
+        this.getMovie(movie.id)
+        this.getSimlarMovies(movie)
       })
-      console.log(this.similarMovies)
     },
     async getMovie(movie){
       try{
@@ -47,17 +45,18 @@ export default {
     },
     async getSimlarMovies(movie){
       try{
-        const req = await fetch(`https://api.themoviedb.org/3/movie/${movie}/similar?api_key=${this.apiKey}&language=en-US`)
+        const req = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${this.apiKey}&language=en-US`)
         const data = await req.json()
         
         if(!data.results) return
-        console.log(movie, "HERE")
+
         const movies = {
           movies: data.results,
-          id: movie
+          id: movie.id,
+          title: movie.title
         }
+
         this.similarMovies.push(movies)
-        console.log(movies)
       }
       catch(e){
         console.log(e.message)
