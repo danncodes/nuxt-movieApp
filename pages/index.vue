@@ -1,5 +1,5 @@
 <template>
-<main class="relative">
+<main class="relative pb-14 sm:pb-0">
   <HomeMainSection :popularMovies="popularMovies" v-if="popularMovies"/>
   <SkeletonHomeMain v-if="!popularMovies"/>
   <AppMoviesBlock blockType="Popular" :movies="popularMovies"/>

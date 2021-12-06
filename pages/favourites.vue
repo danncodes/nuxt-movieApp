@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen">
+  <main class="min-h-screen pb-14 sm:pb-0">
     <!-- No Favouraites -->
     <section class="h-96 w-full flex justify-center" v-if="!favouriteMovies.length">
       <h2 class="my-4">No Favouraites</h2>

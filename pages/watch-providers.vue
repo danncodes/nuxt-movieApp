@@ -1,5 +1,5 @@
 <template>
-<main class="mb-14 sm:ml-14 sm:mb-0 p-4">
+<main class="pb-14 sm:pb-0 sm:ml-14 sm:mb-0 p-4">
   <h1 class="text-xl mb-4 font-medium uppercase border-l-4 border-[#0FEFFD] px-3 rounded-xs">Watch Providers</h1>
   <section class="grid grid-flow-row grid-cols-4 sm:grid-cols-8 lg:grid-cols-9 gap-2">
     <a v-for="provider in watchProviders" :key="provider.provider_id" :href="'https://www.google.co.uk/search?q=' + provider.provider_name" target="_blank">
