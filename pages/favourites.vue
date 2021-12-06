@@ -7,7 +7,6 @@
 
     <!-- User Favourites -->
     <section v-else class="">
-      <div class="h-12 w-12 bg-red-200 ml-auto"></div>
       <AppMoviesBlock blockType="Favourites" :movies="favouriteMovies"/>
       <AppMoviesBlock :blockType="'Because you like ' + movies.title" :movies="movies.movies" v-for="movies in similarMovies" :key="movies.id"/>
     </section>
